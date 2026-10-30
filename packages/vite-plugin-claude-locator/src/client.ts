@@ -357,12 +357,10 @@ export function startClaudeLocator(options: ClientOptions): ClientApi {
     }
   }
 
+  const muted = '#8a8178'
+
   const show = (element: Element): void => {
     const source = findSource(element)
-    if (!source) {
-      hide()
-      return
-    }
     hovered = element
     mount(box)
     const rect = element.getBoundingClientRect()
@@ -371,9 +369,17 @@ export function startClaudeLocator(options: ClientOptions): ClientApi {
     box.style.top = `${rect.top}px`
     box.style.width = `${rect.width}px`
     box.style.height = `${rect.height}px`
+    const color = source ? accent : muted
+    box.style.borderColor = color
+    box.style.background = source ? 'rgba(217,119,87,0.12)' : 'rgba(138,129,120,0.12)'
+    label.style.background = color
     if (Date.now() >= flashUntil) {
-      const owner = findTree(element)[1]
-      label.textContent = owner ? `${owner.label} · ${shortName(source)}` : shortName(source)
+      if (source) {
+        const owner = findTree(element)[1]
+        label.textContent = owner ? `${owner.label} · ${shortName(source)}` : shortName(source)
+      } else {
+        label.textContent = 'no source here'
+      }
     }
   }
 
