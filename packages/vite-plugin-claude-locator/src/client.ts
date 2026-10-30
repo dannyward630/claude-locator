@@ -319,6 +319,7 @@ export function startClaudeLocator(options: ClientOptions): ClientApi {
 
   const font = 'font:12px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;'
   const accent = '#d97757'
+  const muted = '#6b6560'
 
   // Overlay: an outline over the hovered element and a label with its source
   const box = document.createElement('div')
@@ -357,8 +358,6 @@ export function startClaudeLocator(options: ClientOptions): ClientApi {
     }
   }
 
-  const muted = '#8a8178'
-
   const show = (element: Element): void => {
     const source = findSource(element)
     hovered = element
@@ -371,7 +370,7 @@ export function startClaudeLocator(options: ClientOptions): ClientApi {
     box.style.height = `${rect.height}px`
     const color = source ? accent : muted
     box.style.borderColor = color
-    box.style.background = source ? 'rgba(217,119,87,0.12)' : 'rgba(138,129,120,0.12)'
+    box.style.background = source ? 'rgba(217,119,87,0.12)' : 'rgba(107,101,96,0.12)'
     label.style.background = color
     if (Date.now() >= flashUntil) {
       if (source) {

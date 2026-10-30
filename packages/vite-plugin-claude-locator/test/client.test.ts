@@ -87,8 +87,8 @@ describe('Option+hover', () => {
     const label = box.firstElementChild as HTMLElement
     expect(box.style.display).toBe('block')
     expect(label.textContent).toBe('no source here')
-    expect(box.style.borderColor).toBe('#8a8178')
-    expect(label.style.backgroundColor).toBe('#8a8178')
+    expect(box.style.borderColor).toBe('#6b6560')
+    expect(label.style.backgroundColor).toBe('#6b6560')
 
     document.body.innerHTML += '<button data-claude-source="src/App.tsx:4:5">button</button>'
     const button = document.querySelector('button') as Element
